@@ -1,0 +1,9 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Local XAMPP / database artifacts
+*.log
+*.sql.bak
