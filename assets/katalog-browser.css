@@ -52,6 +52,14 @@
 .catalog-modal-copy .catalog-modal-label { display:block; color:#0d9488; font:700 .76rem 'Poppins',sans-serif; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
 .catalog-modal-copy h2 { color:#1e293b; font-size:2rem; margin:0 0 16px; }
 .catalog-modal-copy p { color:#64748b; font:400 1rem/1.75 'Roboto',sans-serif; margin:0; }
+.catalog-specifications { margin-top:24px; padding-top:21px; border-top:1px solid #e2e8f0; }
+.catalog-specifications h3 { margin:0 0 13px; color:#1e293b; font:700 1.02rem 'Poppins',sans-serif; }
+.catalog-specifications dl { margin:0; }
+.catalog-specifications dl > div { display:grid; grid-template-columns:minmax(105px,.72fr) minmax(0,1.28fr); gap:12px; padding:10px 0; border-bottom:1px solid #edf2f7; }
+.catalog-specifications dt { color:#0f766e; font:600 .8rem/1.45 'Poppins',sans-serif; }
+.catalog-specifications dd { margin:0; color:#475569; font:400 .88rem/1.55 'Roboto',sans-serif; }
+.catalog-specifications-pending { padding:15px; border-radius:13px; background:#f8fafc; }
+.catalog-specifications-pending p { font-size:.9rem; line-height:1.6; }
 body.catalog-modal-open { overflow:hidden; }
 @media (max-width:900px) { .catalog-category-card { grid-template-columns:1fr; gap:20px; }.catalog-category-actions { justify-content:flex-start; }.catalog-product-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }.catalog-modal-layout { grid-template-columns:1fr; }.catalog-main-image { height:350px; } }
-@media (max-width:620px) { .catalog-category-card { padding:20px; }.catalog-category-actions { width:100%; align-items:stretch; flex-direction:column; }.catalog-category-preview { width:100%; height:180px; }.catalog-category-card .catalog-open-btn { width:100%; }.catalog-page-heading { align-items:start; flex-direction:column; }.catalog-drawer-head { align-items:start; flex-direction:column; }.catalog-product-grid { grid-template-columns:1fr; }.catalog-modal-panel { padding:18px; }.catalog-main-image { height:290px; padding:20px 48px; }.catalog-modal-copy h2 { font-size:1.55rem; } }
+@media (max-width:620px) { .catalog-category-card { padding:20px; }.catalog-category-actions { width:100%; align-items:stretch; flex-direction:column; }.catalog-category-preview { width:100%; height:180px; }.catalog-category-card .catalog-open-btn { width:100%; }.catalog-page-heading { align-items:start; flex-direction:column; }.catalog-drawer-head { align-items:start; flex-direction:column; }.catalog-product-grid { grid-template-columns:1fr; }.catalog-modal-panel { padding:18px; }.catalog-main-image { height:290px; padding:20px 48px; }.catalog-modal-copy h2 { font-size:1.55rem; }.catalog-specifications dl > div { grid-template-columns:1fr; gap:3px; } }
