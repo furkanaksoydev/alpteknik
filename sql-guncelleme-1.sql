@@ -100,9 +100,19 @@ CREATE TABLE IF NOT EXISTS catalog_product_specifications (
 CREATE TABLE IF NOT EXISTS catalog_product_sources (
   product_id VARCHAR(120) NOT NULL PRIMARY KEY,
   source_url VARCHAR(600) NOT NULL,
-  source_name VARCHAR(100) NOT NULL DEFAULT 'Ayvaz',
+  source_name VARCHAR(100) NOT NULL DEFAULT 'Üretici teknik kaynağı',
   verified_at DATE NOT NULL,
   CONSTRAINT fk_catalog_source_product FOREIGN KEY (product_id) REFERENCES catalog_products(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
+
+CREATE TABLE IF NOT EXISTS catalog_product_information (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  product_id VARCHAR(120) NOT NULL,
+  information_type ENUM('application_areas','installation','benefits') NOT NULL,
+  information_text TEXT NOT NULL,
+  display_order TINYINT UNSIGNED NOT NULL,
+  CONSTRAINT uq_catalog_product_information UNIQUE (product_id, information_type),
+  CONSTRAINT fk_catalog_information_product FOREIGN KEY (product_id) REFERENCES catalog_products(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
 
 CREATE TEMPORARY TABLE tmp_catalog_seed (
@@ -184,7 +194,42 @@ ON DUPLICATE KEY UPDATE specification_value=VALUES(specification_value), display
 
 DELETE source_row FROM catalog_product_sources source_row INNER JOIN tmp_catalog_seed seed ON seed.id=source_row.product_id;
 INSERT INTO catalog_product_sources (product_id,source_url,source_name,verified_at) VALUES
-('astra-plus-debi-regulasyon-vanasi','https://www.ayvaz.com/urun/ari-astra-astra-plus-akis-kontrol-vanasi/','Ayvaz','2026-08-08'),('cona-b-600-bimetalik-kondenstop','https://www.ayvaz.com/urun/ari-cona-b-bimetalik-buhar-kapani-kondenstop/','Ayvaz','2026-08-08'),('cona-s-631a-samandirali-kondenstop','https://www.ayvaz.com/urun/ari-cona-s-samandirali-buhar-kapani-kondenstop/','Ayvaz','2026-08-08'),('cona-sc-634-samandirali-kondenstop','https://www.ayvaz.com/urun/ari-cona-sc-samandirali-buhar-kapani-kondenstop/','Ayvaz','2026-08-08'),('cona-td-641-termodinamik-kondenstop','https://www.ayvaz.com/urun/ari-cona-td-termodinamik-buhar-kapani-kondenstop/','Ayvaz','2026-08-08'),('euro-wedi-kesme-vanasi','https://www.ayvaz.com/urun/ari-euro-wedi-yumusak-contali-kesme-vanasi/','Ayvaz','2026-08-08'),('predu-basinc-dusurucu','https://www.ayvaz.com/urun/ari-predu-direkt-tesirli-denge-koruklu-basinc-dusurucu/','Ayvaz','2026-08-08'),('stevi-405-dp-kontrol-vanasi','https://www.ayvaz.com/urun/ari-stevi-405-460-serisi-aktuatorlu-kesme-vanasi-en/','Ayvaz','2026-08-08'),('stevi-440-premio-kontrol-vanasi','https://www.ayvaz.com/urun/ari-stevi-smart-440-441-serisi-2-yollu-kontrol-vanasi/','Ayvaz','2026-08-08'),('stobu-kesme-vanasi','https://www.ayvaz.com/urun/ari-stobu-baskili-tip-kesme-vanasi/','Ayvaz','2026-08-08'),('aeld-11-seviye-izleme-gostergesi','https://www.ayvaz.com/urun/aeld-11-seviye-gostergesi/','Ayvaz','2026-08-08'),('kazan-tagdiye-cihazi','https://www.ayvaz.com/urun/kazan-tagdiye-cihazi/','Ayvaz','2026-08-08'),('kts-50-seviye-tank-samandirasi','https://www.ayvaz.com/urun/kts-50-seviye-tank-samandirasi/','Ayvaz','2026-08-08'),('rotlu-seviye-salteri','https://www.ayvaz.com/urun/au-20-rotlu-seviye-salteri/','Ayvaz','2026-08-08')
+('astra-plus-debi-regulasyon-vanasi','https://www.ayvaz.com/urun/ari-astra-astra-plus-akis-kontrol-vanasi/','Üretici teknik kaynağı','2026-08-12'),('cona-b-600-bimetalik-kondenstop','https://www.ayvaz.com/urun/ari-cona-b-bimetalik-buhar-kapani-kondenstop/','Üretici teknik kaynağı','2026-08-12'),('cona-s-631a-samandirali-kondenstop','https://www.ayvaz.com/urun/ari-cona-s-samandirali-buhar-kapani-kondenstop/','Üretici teknik kaynağı','2026-08-12'),('cona-sc-634-samandirali-kondenstop','https://www.ayvaz.com/urun/ari-cona-sc-samandirali-buhar-kapani-kondenstop/','Üretici teknik kaynağı','2026-08-12'),('cona-td-641-termodinamik-kondenstop','https://www.ayvaz.com/urun/ari-cona-td-termodinamik-buhar-kapani-kondenstop/','Üretici teknik kaynağı','2026-08-12'),('euro-wedi-kesme-vanasi','https://www.ayvaz.com/urun/ari-euro-wedi-yumusak-contali-kesme-vanasi/','Üretici teknik kaynağı','2026-08-12'),('predu-basinc-dusurucu','https://www.ayvaz.com/urun/ari-predu-direkt-tesirli-denge-koruklu-basinc-dusurucu/','Üretici teknik kaynağı','2026-08-12'),('stevi-405-dp-kontrol-vanasi','https://www.ayvaz.com/urun/ari-stevi-405-460-serisi-aktuatorlu-kesme-vanasi-en/','Üretici teknik kaynağı','2026-08-12'),('stevi-440-premio-kontrol-vanasi','https://www.ayvaz.com/urun/ari-stevi-smart-440-441-serisi-2-yollu-kontrol-vanasi/','Üretici teknik kaynağı','2026-08-12'),('stobu-kesme-vanasi','https://www.ayvaz.com/urun/ari-stobu-baskili-tip-kesme-vanasi/','Üretici teknik kaynağı','2026-08-12'),('aeld-11-seviye-izleme-gostergesi','https://www.ayvaz.com/urun/aeld-11-seviye-gostergesi/','Üretici teknik kaynağı','2026-08-12'),('kazan-tagdiye-cihazi','https://www.ayvaz.com/urun/kazan-tagdiye-cihazi/','Üretici teknik kaynağı','2026-08-12'),('kts-50-seviye-tank-samandirasi','https://www.ayvaz.com/urun/kts-50-seviye-tank-samandirasi/','Üretici teknik kaynağı','2026-08-12'),('rotlu-seviye-salteri','https://www.ayvaz.com/urun/au-20-rotlu-seviye-salteri/','Üretici teknik kaynağı','2026-08-12')
 ON DUPLICATE KEY UPDATE source_url=VALUES(source_url), source_name=VALUES(source_name), verified_at=VALUES(verified_at);
+
+-- Kullanıcı arayüzündeki Kurulum / Uygulama Alanları / Avantajlar panelleri için kaynak doğrulamalı metinler.
+INSERT INTO catalog_product_information (product_id, information_type, information_text, display_order) VALUES
+('astra-plus-debi-regulasyon-vanasi','application_areas','Buhar, sıcak su ve proses hatlarında debi, diferansiyel basınç veya akış koşullarının dengelenmesi gereken uygulamalar.',1),
+('astra-plus-debi-regulasyon-vanasi','installation','Bağlantı biçimi, anma çapı, akış yönü ve seçilen modelin sıcaklık-basınç sınırları proje verileriyle doğrulanmalıdır.',2),
+('astra-plus-debi-regulasyon-vanasi','benefits','Tek gövdede akış kontrolü ve sistem dengesini destekleyerek daha kararlı işletme koşullarına yardımcı olur.',3),
+('aeld-11-seviye-izleme-gostergesi','application_areas','Makine imalatı, gıda tesisi ve boru hatlarında sıvı akışının ya da seviyenin görsel olarak izlenmesi gereken uygulamalar.',1),
+('aeld-11-seviye-izleme-gostergesi','installation','Boru malzemesi ve rakor seçimi çalışma sıcaklığı ile işletme basıncına uygun belirlenmeli; opsiyonel kontak için elektrik bağlantısı talimata göre yapılmalıdır.',2),
+('aeld-11-seviye-izleme-gostergesi','benefits','Kolay montaj, cam veya plexi gösterge seçeneği ve opsiyonel manyetik kontak ile görsel izlemeyi destekler.',3),
+('kts-50-seviye-tank-samandirasi','application_areas','Depo ve tanklarda sıvı seviyesine bağlı mekanik kontrol veya sinyal ihtiyacı olan uygulamalar.',1),
+('kts-50-seviye-tank-samandirasi','installation','3/4″ dişli bağlantı, çalışma basıncı ve sıcaklık sınırları kontrol edilerek şamandıranın serbest hareket edeceği konumda kurulmalıdır.',2),
+('kts-50-seviye-tank-samandirasi','benefits','Paslanmaz çelik temas yüzeyiyle dayanıklı seviye algılama ve basit mekanik kullanım sağlar.',3)
+ON DUPLICATE KEY UPDATE information_text=VALUES(information_text), display_order=VALUES(display_order);
+
+-- Yerel görselleri kaynakta doğrulanmış tam ürün adlarıyla eşleştirir.
+UPDATE catalog_products SET title = CASE id
+  WHEN 'astra-plus-debi-regulasyon-vanasi' THEN 'ARI-ASTRA/ASTRA Plus Akış Kontrol Vanası'
+  WHEN 'cona-b-600-bimetalik-kondenstop' THEN 'ARI-CONA-B Bimetalik Buhar Kapanı (Kondenstop)'
+  WHEN 'cona-s-631a-samandirali-kondenstop' THEN 'ARI-CONA-S Şamandıralı Buhar Kapanı (Kondenstop)'
+  WHEN 'cona-sc-634-samandirali-kondenstop' THEN 'ARI-CONA-SC Şamandıralı Buhar Kapanı (Kondenstop)'
+  WHEN 'cona-td-641-termodinamik-kondenstop' THEN 'ARI-CONA-TD Termodinamik Buhar Kapanı (Kondenstop)'
+  WHEN 'euro-wedi-kesme-vanasi' THEN 'ARI-EURO-WEDI Yumuşak Contalı Kesme Vanası'
+  WHEN 'predu-basinc-dusurucu' THEN 'ARI-PREDU Direkt Tesirli Denge Körüklü Basınç Düşürücü'
+  WHEN 'schmutzfaenger-pislik-tutucu' THEN 'ARI-Pislik Tutucu'
+  WHEN 'stevi-405-dp-kontrol-vanasi' THEN 'ARI-STEVI 405/460 Serisi Aktüatörlü Kesme Vanası EN'
+  WHEN 'stevi-440-premio-kontrol-vanasi' THEN 'ARI-STEVI Smart 440/441 Serisi 2-Yollu Kontrol Vanası'
+  WHEN 'stobu-kesme-vanasi' THEN 'ARI-STOBU Baskılı Tip Kesme Vanası'
+  WHEN 'temptrol-sicaklik-kontrol-vanasi' THEN 'ARI-TEMPTROL Sıcaklık Kontrolörü'
+  WHEN 'ziva-z-kesme-vanasi' THEN 'ARI-ZIVA-Z Wafer Tip Kelebek Vana'
+  ELSE title
+END WHERE id IN ('astra-plus-debi-regulasyon-vanasi','cona-b-600-bimetalik-kondenstop','cona-s-631a-samandirali-kondenstop','cona-sc-634-samandirali-kondenstop','cona-td-641-termodinamik-kondenstop','euro-wedi-kesme-vanasi','predu-basinc-dusurucu','schmutzfaenger-pislik-tutucu','stevi-405-dp-kontrol-vanasi','stevi-440-premio-kontrol-vanasi','stobu-kesme-vanasi','temptrol-sicaklik-kontrol-vanasi','ziva-z-kesme-vanasi');
+
+UPDATE catalog_product_images image_row
+INNER JOIN catalog_products product_row ON product_row.id = image_row.product_id
+SET image_row.alt_text = product_row.title;
 
 DROP TEMPORARY TABLE tmp_catalog_seed;
