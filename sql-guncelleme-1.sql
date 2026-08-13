@@ -1,5 +1,7 @@
 -- Katalog ürün verisi için MySQL / MariaDB güncellemesi.
 -- Yarın tüm ürünler eklendiğinde yalnızca yeni INSERT satırları eklenmelidir.
+-- PhpMyAdmin dahil tüm istemcilerde Türkçe karakter ve karşılaştırma uyumu için zorunludur.
+SET NAMES utf8mb4 COLLATE utf8mb4_turkish_ci;
 
 USE laviraco_alpteknik;
 
@@ -83,9 +85,8 @@ INSERT INTO catalog_product_images (product_id, image_path, alt_text, display_or
 ('flansli-seviye-salteri', 'site içi görseller/seviye-kontrol/flansli-seviye-salteri/flansli-seviye-salteri1.jpeg', 'Flanşlı Seviye Şalteri', 1)
 ON DUPLICATE KEY UPDATE alt_text=VALUES(alt_text), display_order=VALUES(display_order);
 
--- 2026-08-08: Tüm yerel ürün klasörleri için katalog genişletmesi.
+-- Tüm yerel ürün klasörleri için katalog genişletmesi.
 -- Statik katalogdaki veri ile aynı ürün kimliklerini kullanır.
-SET NAMES utf8mb4;
 
 CREATE TABLE IF NOT EXISTS catalog_product_specifications (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -118,10 +119,10 @@ CREATE TABLE IF NOT EXISTS catalog_product_information (
 CREATE TEMPORARY TABLE tmp_catalog_seed (
   id VARCHAR(120) NOT NULL PRIMARY KEY,
   category_id VARCHAR(80) NOT NULL,
-  title VARCHAR(180) NOT NULL,
+  title VARCHAR(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NOT NULL,
   display_order TINYINT UNSIGNED NOT NULL,
   image_extensions VARCHAR(80) NOT NULL
-) ENGINE=Memory;
+) ENGINE=Memory DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
 
 INSERT INTO tmp_catalog_seed (id, category_id, title, display_order, image_extensions) VALUES
 ('astra-plus-debi-regulasyon-vanasi','ari-armaturen','ASTRA Plus Debi Regülasyon Vanası',1,'webp'),
