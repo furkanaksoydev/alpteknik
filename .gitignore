@@ -7,3 +7,7 @@ Thumbs.db
 # Local XAMPP / database artifacts
 *.log
 *.sql.bak
+
+# Generated supplier media package. It is uploaded to the R2 bucket manually,
+# not committed into the site repository.
+r2-alpteknik-urun-gorselleri/
