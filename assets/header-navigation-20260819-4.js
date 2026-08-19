@@ -55,11 +55,13 @@
     <li class="nav-item"><a href="index.html">Ana Sayfa</a></li>
     <li class="nav-item"><a href="hakkimizda.html">Kurumsal</a></li>
     <li class="nav-item nav-has-children">
-      <ul class="dropdown-menu">${productMenu}</ul>
-      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Ürünler alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></button>
       <a href="kataloglar.html" aria-haspopup="true" aria-expanded="false">Ürünler <i class="fa-solid fa-angle-down" aria-hidden="true"></i></a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Ürünler alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></button>
+      <ul class="dropdown-menu">${productMenu}</ul>
     </li>
     <li class="nav-item nav-has-children">
+      <a href="kompansator-sistemleri.html">Çözümlerimiz <i class="fa-solid fa-angle-down" aria-hidden="true"></i></a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Çözümlerimiz alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></button>
       <ul class="dropdown-menu">
         <li><a href="kompansator-sistemleri.html">Kompansatör Sistemleri</a></li>
         <li><a href="esnek-metal-hortumlar.html">Esnek Metal Hortumlar</a></li>
@@ -69,8 +71,6 @@
         <li><a href="otomasyon-seviye-kontrol.html">Otomasyon &amp; Seviye Kontrol</a></li>
         <li><a href="kataloglar.html">Dokümanlar &amp; Teknik Kaynaklar</a></li>
       </ul>
-      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Çözümlerimiz alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></button>
-      <a href="kompansator-sistemleri.html">Çözümlerimiz <i class="fa-solid fa-angle-down" aria-hidden="true"></i></a>
     </li>
     <li class="nav-item"><a href="referanslar.html">Referanslar</a></li>
     <li class="nav-item"><a href="iletisim.html">İletişim</a></li>`;
@@ -108,7 +108,7 @@
       event.currentTarget.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
     });
     header.querySelectorAll('[data-menu-toggle]').forEach(button => button.addEventListener('click', () => toggleBranch(button)));
-    header.querySelectorAll('.dropdown-menu .menu-has-children > a').forEach(link => {
+    header.querySelectorAll('.nav-has-children > a, .dropdown-menu .menu-has-children > a').forEach(link => {
       link.addEventListener('click', event => {
         if (window.innerWidth >= 993) return;
         event.preventDefault();
@@ -127,3 +127,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 }());
+
+
