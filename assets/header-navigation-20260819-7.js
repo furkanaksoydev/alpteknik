@@ -52,7 +52,7 @@
     <li class="menu-has-children">
       <a href="kataloglar.html?category=fittings-malzemeler">Fittings Malzemeler</a>
       <button class="nav-toggle" type="button" data-menu-toggle aria-label="Fittings malzemeler alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
-      <ul class="submenu-panel">
+      <ul class="submenu-panel submenu-panel--fittings">
         <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-kaynaklilar.pdf" target="_blank" rel="noopener noreferrer">Kaynaklılar</a></li>
         <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-disliler.pdf" target="_blank" rel="noopener noreferrer">Dişliler</a></li>
         <li class="menu-has-children">
@@ -170,3 +170,4 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 }());
+
