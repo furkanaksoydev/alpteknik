@@ -55,10 +55,26 @@
       <ul class="submenu-panel">
         <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-kaynaklilar.pdf" target="_blank" rel="noopener noreferrer">Kaynaklılar</a></li>
         <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-disliler.pdf" target="_blank" rel="noopener noreferrer">Dişliler</a></li>
-        <li class="menu-group">İnox Kaynaklı</li>
-        <li><span class="menu-static-item">Dirsek · Te · Redüksiyon</span></li>
-        <li class="menu-group">İnox Dişli</li>
-        <li><span class="menu-static-item">Dirsek · Te · Redüksiyon · Rekor · Hortum Rakoru</span></li>
+        <li class="menu-has-children">
+          <a href="#inox-kaynakli">İnox Kaynaklı</a>
+          <button class="nav-toggle" type="button" data-menu-toggle aria-label="İnox kaynaklı alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+          <ul class="submenu-panel">
+            <li><a href="#inox-kaynakli-dirsek">Dirsek</a></li>
+            <li><a href="#inox-kaynakli-te">Te</a></li>
+            <li><a href="#inox-kaynakli-reduksiyon">Redüksiyon</a></li>
+          </ul>
+        </li>
+        <li class="menu-has-children">
+          <a href="#inox-disli">İnox Dişli</a>
+          <button class="nav-toggle" type="button" data-menu-toggle aria-label="İnox dişli alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+          <ul class="submenu-panel">
+            <li><a href="#inox-disli-dirsek">Dirsek</a></li>
+            <li><a href="#inox-disli-te">Te</a></li>
+            <li><a href="#inox-disli-reduksiyon">Redüksiyon</a></li>
+            <li><a href="#inox-disli-rekor">Rekor</a></li>
+            <li><a href="#inox-disli-hortum-rakoru">Hortum Rakoru</a></li>
+          </ul>
+        </li>
         <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-pirinc-malzemeler.pdf" target="_blank" rel="noopener noreferrer">Pirinç Malzemeler</a></li>
         <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-yangin-urunleri.pdf" target="_blank" rel="noopener noreferrer">Yangın Ürünleri</a></li>
         <li class="menu-has-children">

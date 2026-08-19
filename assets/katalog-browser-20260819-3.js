@@ -119,7 +119,7 @@
       activeImage = 0;
       modal.querySelector('.catalog-modal-label').textContent = category.title;
       modal.querySelector('.catalog-modal-copy h2').textContent = activeProduct.name;
-      modal.querySelector('.catalog-modal-copy p').textContent = activeProduct.description;
+      modal.querySelector('.catalog-modal-copy p').innerHTML = escapeHtml(activeProduct.modalDescription || activeProduct.description).replace(/\n/g, '<br>');
       modal.querySelector('.catalog-specifications').innerHTML = renderSpecifications(activeProduct);
       updateImage();
       modal.classList.add('is-open');
