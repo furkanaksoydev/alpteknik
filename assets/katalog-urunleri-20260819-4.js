@@ -263,4 +263,3 @@ window.catalogSettings = { previewLimit: null };
     categories: categories.map(category => ({ ...category, products: category.products.map(product => makeProduct(category.id, product)) }))
   };
 }());
-

@@ -146,4 +146,3 @@
   if (selectedCategory) renderProductCatalog(selectedCategory);
   else renderCategoryList();
 }());
-

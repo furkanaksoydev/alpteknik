@@ -82,4 +82,3 @@
 body.catalog-modal-open { overflow:hidden; }
 @media (max-width:900px) { .catalog-directory { grid-template-columns:1fr; }.catalog-product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.catalog-modal-layout { grid-template-columns:1fr; }.catalog-main-image { height:350px; } }
 @media (max-width:620px) { .catalog-directory-heading { padding:22px 20px 18px; }.catalog-directory-heading p { min-height:0; }.catalog-directory-groups a { padding:11px 18px; }.catalog-page-heading { align-items:start; flex-direction:column; }.catalog-product-grid { grid-template-columns:1fr; }.catalog-modal-panel { padding:18px; }.catalog-main-image { height:290px; padding:20px 48px; }.catalog-modal-copy h2 { font-size:1.55rem; }.catalog-specifications dl > div { grid-template-columns:1fr; gap:3px; } }
-
