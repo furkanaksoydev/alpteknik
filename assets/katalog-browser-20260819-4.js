@@ -48,6 +48,7 @@
   }
 
   function renderSpecifications(product) {
+    if (product.groupId === 'contalar') return '';
     const sourceUrl = product.sourceUrl || '';
     const tag = sourceUrl ? 'a' : 'div';
     const attributes = sourceUrl
@@ -145,3 +146,4 @@
   if (selectedCategory) renderProductCatalog(selectedCategory);
   else renderCategoryList();
 }());
+

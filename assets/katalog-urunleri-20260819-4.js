@@ -171,24 +171,24 @@ window.catalogSettings = { previewLimit: null };
     'teflon-ptfe-contalar': { sourceUrl: 'https://emekconta.com.tr/urunler/emeflon-ptfe-contalar/' },
     'ici-ringli-saf-grafit-contalar': { sourceUrl: 'https://emekconta.com.tr/urunler/ici-ringli-saf-grafit-contalarzzz/' },
     'lastik-contalar': {
-      sourceUrl: 'https://emekconta.com.tr/urunler/lastik-contalar/',
+      sourceUrl: '',
       images: ['https://emekconta.com.tr/wp-content/uploads/2025/05/LASTIK-CONTALAR.jpg']
     },
     'diger-contalar': {
-      sourceUrl: 'https://emekconta.com.tr/urunler/diger-contalar/',
+      sourceUrl: '',
       images: ['https://emekconta.com.tr/wp-content/uploads/2025/05/DIGER-CONTALAR.jpg']
     },
     'spiral-sarimli-contalar': {
-      sourceUrl: 'https://emekconta.com.tr/urunler/spiral-sarimli-contalar/',
+      sourceUrl: '',
       images: ['https://emekconta.com.tr/wp-content/uploads/2025/05/SPIRAL-SARIMLI-CONTALAR.jpg'],
       modalDescription: 'Spiral sarımlı contalar; özellikle basınç ve sıcaklığın yüksek olduğu noktalarda kullanılan sızdırmazlık elemanlarıdır. Petrol rafinerileri, petrokimya tesisleri, nükleer ve enerji santralleri, demir-çelik tesisleri, doğalgaz ve petrol boru hatları ile gemi endüstrisi gibi alanlarda tercih edilir.\n\nUygulama yerine göre farklı sarım ve dolgu malzemeleriyle; iç ve dış ringsiz, iç ringli, dış ringli veya iç ve dış ringli çeşitlerde üretilir. ASME B16.20, ASME B16.47 Seri A / Seri B, DIN EN 1514-2 ve JIS standartlarına uygun ya da özel ölçülerde sunulabilir.'
     },
     'teflon-ptfe-contalar': {
-      sourceUrl: 'https://emekconta.com.tr/urunler/emeflon-ptfe-contalar/',
+      sourceUrl: '',
       images: ['https://emekconta.com.tr/wp-content/uploads/2025/05/EMEFLON-PTFE-CONTALAR.jpg']
     },
     'ici-ringli-saf-grafit-contalar': {
-      sourceUrl: 'https://emekconta.com.tr/urunler/ici-ringli-saf-grafit-contalarzzz/',
+      sourceUrl: '',
       images: ['https://emekconta.com.tr/wp-content/uploads/2025/05/ICI-RINGLI-SAF-GRAFIT-CONTALAR.jpg']
     }
   };
@@ -263,3 +263,4 @@ window.catalogSettings = { previewLimit: null };
     categories: categories.map(category => ({ ...category, products: category.products.map(product => makeProduct(category.id, product)) }))
   };
 }());
+
