@@ -17,7 +17,16 @@ window.catalogSettings = { previewLimit: null };
     'boru-ve-baglanti-elemanlari': name => `${name}, boru hattının montajı, yönlendirilmesi veya güvenli şekilde sonlandırılması için kullanılan bir bağlantı elemanıdır. Malzeme türü, et kalınlığı, bağlantı şekli ve çap seçimi; akışkan, çalışma basıncı ve uygulanacak tesisat standardına göre proje bazında doğrulanmalıdır.`,
     'endustriyel-vanalar': name => `${name}; proses hattında akışı kesmek, yönlendirmek veya kontrol etmek üzere seçilen endüstriyel vana çözümüdür. Aktüatör, bağlantı tipi, gövde malzemesi ve sızdırmazlık elemanları; akışkanın özellikleri ile basınç, sıcaklık ve otomasyon ihtiyacına göre belirlenmelidir.`,
     'pnomatik': name => `${name}, basınçlı hava sistemlerinde güvenli bağlantı, kontrollü hareket veya sinyal iletimi sağlamak için kullanılır. Hortum çapı, bağlantı dişi, çalışma basıncı, ortam sıcaklığı ve hava kalitesi; ekipmanın uygulamaya uygun seçiminde birlikte değerlendirilmelidir.`,
+    'fittings-malzemeler': name => `${name}, endüstriyel tesisat ve proses hatlarında sızdırmazlık gerektiren bağlantı yüzeyleri için kullanılan bir ürün grubudur. Malzeme, ölçü ve çalışma sınırları ilgili teknik ürün sayfasından doğrulanmalıdır.`,
     'seviye-kontrol': name => `${name}; tank, kazan ve proses ekipmanlarında seviye izleme veya kontrol ihtiyacını destekleyen bir çözümdür. Akışkan türü, montaj yönü, basınç, sıcaklık, kontak gereksinimi ve bağlantı şekli projeye göre teyit edilerek seçilmelidir.`
+  };
+
+  const productDescriptions = {
+    'diger-contalar': 'Farklı endüstriyel tesisat ve sızdırmazlık ihtiyaçlarına göre seçilen conta çeşitleri için ürün grubudur.',
+    'spiral-sarimli-contalar': 'Yüksek sıcaklık ve basınç koşullarında sızdırmazlık için sarım, dolgu ve ring seçenekleriyle sunulan conta grubudur.',
+    'teflon-ptfe-contalar': 'PTFE esaslı yapısıyla kimyasal uyumluluk ve sızdırmazlık gerektiren uygulamalar için conta çözümüdür.',
+    'ici-ringli-saf-grafit-contalar': 'Grafit esaslı yapısı ve iç ring desteğiyle uygun flanş bağlantılarında sızdırmazlık için kullanılan conta grubudur.',
+    'lastik-contalar': 'Elastomer malzeme seçenekleriyle uygulamanın akışkan, sıcaklık ve basınç koşullarına göre seçilen conta grubudur.'
   };
 
   /* Her kartta aynı teknik okuma sırasını koruyan, ürün ailesine göre başlangıç bilgileri. */
@@ -156,14 +165,21 @@ window.catalogSettings = { previewLimit: null };
       specs: [['Gövde', 'AISI 304 paslanmaz çelik; AISI 316 opsiyonlu'], ['Çalışma sıcaklığı', '-10 °C / +125 °C'], ['Maksimum çalışma basıncı', '16 bar'], ['Bağlantı', 'BSP veya NPT dişli; minimum 3/8″'], ['Koruma sınıfı', 'IP68 + EX-PROOF']]
     },
     'seviye-kontrol-paneli': { sourceUrl: 'https://www.ayvaz.com/urun/ask-p3-p4-seviye-kontrol-cihazi/' },
-    'seviye-samandirasi': { sourceUrl: 'https://www.ayvaz.com/urun/kts-50-seviye-tank-samandirasi/' }
+    'seviye-samandirasi': { sourceUrl: 'https://www.ayvaz.com/urun/kts-50-seviye-tank-samandirasi/' },
+    'diger-contalar': { sourceUrl: 'https://emekconta.com.tr/urunler/diger-contalar/' },
+    'spiral-sarimli-contalar': { sourceUrl: 'https://emekconta.com.tr/urunler/spiral-sarimli-contalar/' },
+    'teflon-ptfe-contalar': { sourceUrl: 'https://emekconta.com.tr/urunler/emeflon-ptfe-contalar/' },
+    'ici-ringli-saf-grafit-contalar': { sourceUrl: 'https://emekconta.com.tr/urunler/ici-ringli-saf-grafit-contalarzzz/' },
+    'lastik-contalar': { sourceUrl: 'https://emekconta.com.tr/urunler/lastik-contalar/' }
   };
 
-  const makeProduct = (category, [id, name, formats]) => ({
+  const makeProduct = (category, [id, name, formats, group = '', groupId = '']) => ({
     id,
     name,
-    description: copyByCategory[category](name),
-    images: imageList(category, id, formats),
+    group,
+    groupId,
+    description: productDescriptions[id] || copyByCategory[category](name),
+    images: formats ? imageList(category, id, formats) : [],
     ...guidanceByCategory[category],
     ...(manufacturerData[id] || {})
   });
@@ -198,7 +214,19 @@ window.catalogSettings = { previewLimit: null };
       description: 'Basınçlı hava hatları için rekor, hortum, silindir, valf, sensör ve hava hazırlayıcı ekipmanlardan oluşan ürün grupları.',
       seo: { title: 'Pnömatik Sistemler | Alp Teknik', description: 'Hava hortumu, rekor, valf, silindir, sensör ve hava hazırlayıcı ürünleriyle basınçlı hava sistemlerinizi inceleyin.', keywords: 'pnömatik sistemler, hava hortumu, pnömatik rekor, selenoid valf, pnömatik silindir', intro: 'Pnömatik sistemler basınçlı havayı kontrollü hareket ve otomasyona dönüştürmek için hortum, rekor, valf, silindir, sensör ve hava hazırlayıcılardan oluşur. Hava kalitesi, basınç, hortum çapı ve bağlantı standardı sistem performansını doğrudan etkiler.' },
       products: [
-        ['duz-rekor', 'Düz Rekor', 'jpeg'], ['hava-hazirlayici', 'Hava Hazırlayıcı', 'jpeg,jpeg'], ['hava-hortumu', 'Pnömatik Hava Hortumu', 'jpeg,jpeg,jpeg,jpeg,jpeg'], ['hortum-rakoru', 'Hortum Rakoru', 'jpeg'], ['kompakt-silindir', 'Kompakt Silindir', 'jpeg'], ['manyetik-sensor', 'Manyetik Sensör', 'jpeg'], ['pirinc-rakor', 'Pirinç Rakor', 'jpeg'], ['pnomatik-rekor', 'Pnömatik Rekor', 'jpeg,jpeg,jpeg'], ['selenoid-valf', 'Selenoid Valf', 'jpeg'], ['selenoid-valf-bobini', 'Selenoid Valf Bobini', 'jpeg'], ['sensor-test-cihazi', 'Sensör Test Cihazı', 'jpeg'], ['standart-silindir', 'Standart Silindir', 'jpeg'], ['valf-manifoldu', 'Valf Manifoldu', 'jpeg'], ['yon-kontrol-valfi', 'Yön Kontrol Valfi', 'jpeg'], ['yuvarlak-silindir', 'Yuvarlak Silindir', 'jpeg']
+        ['duz-rekor', 'Düz Rekor', 'jpeg'], ['hava-hazirlayici', 'Hava Hazırlayıcı', 'jpeg,jpeg'], ['hava-hortumu', 'Pnömatik Hava Hortumu', 'jpeg,jpeg,jpeg,jpeg,jpeg'], ['kompakt-silindir', 'Kompakt Silindir', 'jpeg'], ['manyetik-sensor', 'Manyetik Sensör', 'jpeg'], ['pnomatik-rekor', 'Pnömatik Rekor', 'jpeg,jpeg,jpeg'], ['selenoid-valf', 'Selenoid Valf', 'jpeg'], ['selenoid-valf-bobini', 'Selenoid Valf Bobini', 'jpeg'], ['sensor-test-cihazi', 'Sensör Test Cihazı', 'jpeg'], ['standart-silindir', 'Standart Silindir', 'jpeg'], ['valf-manifoldu', 'Valf Manifoldu', 'jpeg'], ['yon-kontrol-valfi', 'Yön Kontrol Valfi', 'jpeg'], ['yuvarlak-silindir', 'Yuvarlak Silindir', 'jpeg']
+      ]
+    },
+    {
+      id: 'fittings-malzemeler', title: 'Fittings Malzemeler',
+      description: 'Kaynaklı, dişli, inox, pirinç ve conta ürün grupları için doküman ve teknik kaynaklar.',
+      seo: { title: 'Fittings Malzemeler ve Contalar | Alp Teknik', description: 'Fittings malzemeler, conta çeşitleri ve teknik dokümanlara Alp Teknik üzerinden ulaşın.', keywords: 'fittings malzemeler, contalar, spiral sarımlı conta, PTFE conta, grafit conta, lastik conta', intro: 'Fittings malzemeler ve contalar; tesisat hatlarında bağlantı, montaj ve sızdırmazlık ihtiyacına göre seçilir. Teknik ayrıntılar için ilgili ürün sayfasını inceleyin.' },
+      products: [
+        ['diger-contalar', 'Diğer Contalar', '', 'Contalar', 'contalar'],
+        ['spiral-sarimli-contalar', 'Spiral Sarımlı Contalar', '', 'Contalar', 'contalar'],
+        ['teflon-ptfe-contalar', 'Teflon (PTFE) Contalar', '', 'Contalar', 'contalar'],
+        ['ici-ringli-saf-grafit-contalar', 'İçi Ringli Saf Grafit Contalar', '', 'Contalar', 'contalar'],
+        ['lastik-contalar', 'Lastik Contalar', '', 'Contalar', 'contalar']
       ]
     },
     {

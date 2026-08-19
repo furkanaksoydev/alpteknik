@@ -49,7 +49,34 @@
       </ul>
     </li>
     <li><a href="kataloglar.html?category=pnomatik">Pnömatik</a></li>
-    <li><a href="kataloglar.html">Yardımcı Ürünler</a></li>`;
+    <li class="menu-has-children">
+      <a href="kataloglar.html?category=fittings-malzemeler">Fittings Malzemeler</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Fittings malzemeler alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+      <ul class="submenu-panel">
+        <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-kaynaklilar.pdf" target="_blank" rel="noopener noreferrer">Kaynaklılar</a></li>
+        <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-disliler.pdf" target="_blank" rel="noopener noreferrer">Dişliler</a></li>
+        <li class="menu-group">İnox Kaynaklı</li>
+        <li><span class="menu-static-item">Dirsek · Te · Redüksiyon</span></li>
+        <li class="menu-group">İnox Dişli</li>
+        <li><span class="menu-static-item">Dirsek · Te · Redüksiyon · Rekor · Hortum Rakoru</span></li>
+        <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-pirinc-malzemeler.pdf" target="_blank" rel="noopener noreferrer">Pirinç Malzemeler</a></li>
+        <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-yangin-urunleri.pdf" target="_blank" rel="noopener noreferrer">Yangın Ürünleri</a></li>
+        <li class="menu-has-children">
+          <a href="kataloglar.html?category=fittings-malzemeler&amp;group=contalar">Contalar</a>
+          <button class="nav-toggle" type="button" data-menu-toggle aria-label="Contalar alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+          <ul class="submenu-panel">
+            <li><a href="https://emekconta.com.tr/urunler/diger-contalar/" target="_blank" rel="noopener noreferrer">Diğer Contalar</a></li>
+            <li><a href="https://emekconta.com.tr/urunler/spiral-sarimli-contalar/" target="_blank" rel="noopener noreferrer">Spiral Sarımlı Contalar</a></li>
+            <li><a href="https://emekconta.com.tr/urunler/emeflon-ptfe-contalar/" target="_blank" rel="noopener noreferrer">Teflon (PTFE) Contalar</a></li>
+            <li><a href="https://emekconta.com.tr/urunler/ici-ringli-saf-grafit-contalarzzz/" target="_blank" rel="noopener noreferrer">İçi Ringli Saf Grafit Contalar</a></li>
+            <li><a href="https://emekconta.com.tr/urunler/lastik-contalar/" target="_blank" rel="noopener noreferrer">Lastik Contalar</a></li>
+            <li class="submenu-all"><a href="kataloglar.html?category=fittings-malzemeler&amp;group=contalar">Tüm contaları görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
+          </ul>
+        </li>
+        <li class="submenu-all"><a href="kataloglar.html?category=fittings-malzemeler">Tüm fittings malzemelerini görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
+      </ul>
+    </li>
+    <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-monometreler.pdf" target="_blank" rel="noopener noreferrer">Monometreler</a></li>`;
 
   const menuMarkup = `
     <li class="nav-item"><a href="index.html">Ana Sayfa</a></li>
@@ -127,5 +154,3 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 }());
-
-

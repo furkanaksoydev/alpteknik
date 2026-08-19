@@ -47,16 +47,13 @@
     return '<div class="catalog-product-modal" role="dialog" aria-modal="true" aria-label="Ürün inceleme penceresi"><div class="catalog-modal-panel"><button class="catalog-modal-close" type="button" aria-label="Kapat">&times;</button><div class="catalog-modal-layout"><div class="catalog-gallery"><div class="catalog-main-image"><button class="catalog-gallery-arrow catalog-gallery-prev" type="button" aria-label="Önceki görsel"><i class="fa-solid fa-chevron-left"></i></button><img alt=""><button class="catalog-gallery-arrow catalog-gallery-next" type="button" aria-label="Sonraki görsel"><i class="fa-solid fa-chevron-right"></i></button></div><div class="catalog-thumbnails" aria-label="Ürün görselleri"></div></div><div class="catalog-modal-copy"><span class="catalog-modal-label"></span><h2></h2><p></p><section class="catalog-specifications" aria-label="Teknik özellikler"></section></div></div></div></div>';
   }
 
-  function renderProductInformation(product) {
-    const blocks = [['Uygulama Alanları', product.applicationAreas], ['Kurulum', product.installation], ['Avantajlar', product.benefits]].filter(([, value]) => value);
-    if (!blocks.length && !product.sourceUrl) return '';
-    return `<section class="catalog-product-information" aria-label="Ürün kullanım bilgileri">${blocks.map(([title, value]) => `<div><h3>${title}</h3><p>${escapeHtml(value)}</p></div>`).join('')}${product.sourceUrl ? `<a class="catalog-source-link" href="${escapeHtml(product.sourceUrl)}" target="_blank" rel="noopener noreferrer">Teknik ürün sayfasını aç <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}</section>`;
-  }
-
   function renderSpecifications(product) {
-    const specifications = product.specs || [];
-    if (!specifications.length) return '<div class="catalog-specifications-pending"><h3>Teknik Bilgi</h3><p>Bu ürünün ölçü, malzeme ve performans seçenekleri uygulamaya göre değişir. Kesin seçim için proje bilgisiyle teknik destek ekibimize başvurun.</p></div>';
-    return `<h3>Teknik Özellikler</h3><dl>${specifications.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>`;
+    const sourceUrl = product.sourceUrl || '';
+    const tag = sourceUrl ? 'a' : 'div';
+    const attributes = sourceUrl
+      ? ` href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer"`
+      : ' aria-disabled="true"';
+    return `<${tag} class="catalog-technical-card"${attributes} aria-label="Teknik ürün sayfasını aç"><h3>Teknik Bilgi</h3><p>Teknik Ürün Sayfasını Aç</p></${tag}>`;
   }
 
   function renderCategoryList() {
@@ -123,7 +120,7 @@
       modal.querySelector('.catalog-modal-label').textContent = category.title;
       modal.querySelector('.catalog-modal-copy h2').textContent = activeProduct.name;
       modal.querySelector('.catalog-modal-copy p').textContent = activeProduct.description;
-      modal.querySelector('.catalog-specifications').innerHTML = `${renderProductInformation(activeProduct)}${renderSpecifications(activeProduct)}`;
+      modal.querySelector('.catalog-specifications').innerHTML = renderSpecifications(activeProduct);
       updateImage();
       modal.classList.add('is-open');
       document.body.classList.add('catalog-modal-open');

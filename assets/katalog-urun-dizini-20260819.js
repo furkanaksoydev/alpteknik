@@ -7,6 +7,7 @@
   'use strict';
 
   const existingPneumatic = window.catalogData?.categories?.find(category => category.id === 'pnomatik');
+  const existingFittings = window.catalogData?.categories?.find(category => category.id === 'fittings-malzemeler');
   const source = 'https://www.ayvaz.com/urun/';
   const groupIds = {
     'Ayvaz Kesme Vanaları': 'ayvaz-kesme-vanalari', 'Ayvaz Manometre Vanaları': 'ayvaz-manometre-vanalari',
@@ -77,6 +78,7 @@
     makeCategory('vanalar', 'Vanalar', 'Kesme, kontrol, emniyet, balans, çekvalf ve proses vanaları için ürün grupları.', vanalar),
     makeCategory('kompansatorler', 'Kompansatörler', 'Metal körüklü, kauçuk ve özel tasarım kompansatör ürün grupları.', kompansatorler),
     makeCategory('seviye-gostergeleri', 'Seviye Göstergeleri', 'Seviye izleme, blöf, kontrol ve akış ölçüm sistemleri için ürün grupları.', seviye),
-    ...(existingPneumatic ? [existingPneumatic] : [])
+    ...(existingPneumatic ? [existingPneumatic] : []),
+    ...(existingFittings ? [existingFittings] : [])
   ] };
 }());
