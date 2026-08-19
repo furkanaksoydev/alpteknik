@@ -1,4 +1,6 @@
 (function () {
+  'use strict';
+
   const categories = window.catalogData?.categories || [];
   let browser = document.querySelector('[data-catalog-browser]') || document.querySelector('.content-section .container > .split-layout + div[style*="margin-top"]');
   if (!browser || !categories.length) return;
@@ -10,18 +12,11 @@
   const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[char]);
   const catalogSection = browser.closest('section');
   const catalogContainer = catalogSection?.querySelector('.container');
+
   if (categoryId && catalogContainer) {
     document.querySelector('.page-hero')?.remove();
-    catalogContainer.innerHTML = `<div class="title-wrapper catalog-only-title"><div class="page-kicker">ÜRÜN KATALOĞU</div><h1 class="section-title">Ürün <span>Kataloğu</span></h1><p class="section-subtitle">Kategori seçerek ürün gruplarımızı inceleyin.</p></div><div data-catalog-browser></div>`;
+    catalogContainer.innerHTML = '<div class="title-wrapper catalog-only-title"><div class="page-kicker">ÜRÜN KATALOĞU</div><h1 class="section-title">Ürün <span>Kataloğu</span></h1><p class="section-subtitle">Kategori seçerek ürün gruplarımızı inceleyin.</p></div><div data-catalog-browser></div>';
     browser = catalogContainer.querySelector('[data-catalog-browser]');
-  }
-
-  function categoryCard(category) {
-    const firstProduct = category.products[0] || {};
-    return `<article class="catalog-category-card">
-      <div class="catalog-category-copy"><h3>${escapeHtml(category.title)}</h3><p>${escapeHtml(category.description)}</p></div>
-      <div class="catalog-category-actions"><div class="catalog-category-preview">${firstProduct.images?.[0] ? `<img src="${firstProduct.images[0]}" alt="${escapeHtml(firstProduct.name || category.title)}" loading="lazy">` : '<i class="fa-solid fa-box-open" aria-hidden="true"></i>'}</div><a class="catalog-open-btn" href="kataloglar.html?category=${encodeURIComponent(category.id)}">Kataloğu İncele <i class="fa-solid fa-arrow-right"></i></a></div>
-    </article>`;
   }
 
   function productCard(product) {
@@ -31,25 +26,36 @@
     return `<button type="button" class="catalog-product-card" data-product-id="${product.id}" aria-label="${escapeHtml(product.name)} ürününü incele"><div class="catalog-product-card-media">${media}</div><div class="catalog-product-card-body"><span class="catalog-product-group">${escapeHtml(product.group || '')}</span><h4>${escapeHtml(product.name)}</h4><p>${escapeHtml(product.description)}</p><span class="catalog-product-card-hint">Ürünü incele <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div></button>`;
   }
 
+  function categoryDirectory(category) {
+    const groups = [];
+    category.products.forEach(product => {
+      const id = product.groupId || '';
+      const title = product.group || 'Tüm ürünler';
+      const group = groups.find(item => item.id === id && item.title === title);
+      if (group) group.count += 1;
+      else groups.push({ id, title, count: 1 });
+    });
+    const categoryUrl = `kataloglar.html?category=${encodeURIComponent(category.id)}`;
+    const groupLinks = groups.map(group => {
+      const href = group.id ? `${categoryUrl}&amp;group=${encodeURIComponent(group.id)}` : categoryUrl;
+      return `<li><a href="${href}"><span>${escapeHtml(group.title)}</span><small>${group.count} ürün</small><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>`;
+    }).join('');
+    return `<article class="catalog-directory-card"><div class="catalog-directory-heading"><h2><a href="${categoryUrl}">${escapeHtml(category.title)}</a></h2><p>${escapeHtml(category.description)}</p><a class="catalog-directory-all" href="${categoryUrl}">Tüm ${escapeHtml(category.title)} ürünleri <i class="fa-solid fa-arrow-right"></i></a></div><ul class="catalog-directory-groups">${groupLinks}</ul></article>`;
+  }
+
   function modalMarkup() {
-    return `<div class="catalog-product-modal" role="dialog" aria-modal="true" aria-label="Ürün inceleme penceresi"><div class="catalog-modal-panel"><button class="catalog-modal-close" type="button" aria-label="Kapat">&times;</button><div class="catalog-modal-layout"><div class="catalog-gallery"><div class="catalog-main-image"><button class="catalog-gallery-arrow catalog-gallery-prev" type="button" aria-label="Önceki görsel"><i class="fa-solid fa-chevron-left"></i></button><img alt=""><button class="catalog-gallery-arrow catalog-gallery-next" type="button" aria-label="Sonraki görsel"><i class="fa-solid fa-chevron-right"></i></button></div><div class="catalog-thumbnails" aria-label="Ürün görselleri"></div></div><div class="catalog-modal-copy"><span class="catalog-modal-label"></span><h2></h2><p></p><section class="catalog-specifications" aria-label="Teknik özellikler"></section></div></div></div></div>`;
+    return '<div class="catalog-product-modal" role="dialog" aria-modal="true" aria-label="Ürün inceleme penceresi"><div class="catalog-modal-panel"><button class="catalog-modal-close" type="button" aria-label="Kapat">&times;</button><div class="catalog-modal-layout"><div class="catalog-gallery"><div class="catalog-main-image"><button class="catalog-gallery-arrow catalog-gallery-prev" type="button" aria-label="Önceki görsel"><i class="fa-solid fa-chevron-left"></i></button><img alt=""><button class="catalog-gallery-arrow catalog-gallery-next" type="button" aria-label="Sonraki görsel"><i class="fa-solid fa-chevron-right"></i></button></div><div class="catalog-thumbnails" aria-label="Ürün görselleri"></div></div><div class="catalog-modal-copy"><span class="catalog-modal-label"></span><h2></h2><p></p><section class="catalog-specifications" aria-label="Teknik özellikler"></section></div></div></div></div>';
   }
 
   function renderProductInformation(product) {
-    const blocks = [
-      ['Uygulama Alanları', product.applicationAreas],
-      ['Kurulum', product.installation],
-      ['Avantajlar', product.benefits]
-    ].filter(([, value]) => value);
+    const blocks = [['Uygulama Alanları', product.applicationAreas], ['Kurulum', product.installation], ['Avantajlar', product.benefits]].filter(([, value]) => value);
     if (!blocks.length && !product.sourceUrl) return '';
     return `<section class="catalog-product-information" aria-label="Ürün kullanım bilgileri">${blocks.map(([title, value]) => `<div><h3>${title}</h3><p>${escapeHtml(value)}</p></div>`).join('')}${product.sourceUrl ? `<a class="catalog-source-link" href="${escapeHtml(product.sourceUrl)}" target="_blank" rel="noopener noreferrer">Teknik ürün sayfasını aç <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}</section>`;
   }
 
   function renderSpecifications(product) {
     const specifications = product.specs || [];
-    if (!specifications.length) {
-      return `<div class="catalog-specifications-pending"><h3>Teknik Bilgi</h3><p>Bu ürünün ölçü, malzeme ve performans seçenekleri uygulamaya göre değişir. Kesin seçim için proje bilgisiyle teknik destek ekibimize başvurun.</p></div>`;
-    }
+    if (!specifications.length) return '<div class="catalog-specifications-pending"><h3>Teknik Bilgi</h3><p>Bu ürünün ölçü, malzeme ve performans seçenekleri uygulamaya göre değişir. Kesin seçim için proje bilgisiyle teknik destek ekibimize başvurun.</p></div>';
     return `<h3>Teknik Özellikler</h3><dl>${specifications.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>`;
   }
 
@@ -60,7 +66,7 @@
       technicalSources.style.marginTop = '70px';
       browser.after(technicalSources);
     }
-    browser.innerHTML = categories.map(categoryCard).join('');
+    browser.innerHTML = `<div class="catalog-directory-intro"><div class="page-kicker">TÜM ÜRÜNLER</div><h1>Ürün gruplarımız ve alt kategorilerimiz</h1><p>Aradığınız ürün ailesini veya alt kategoriyi seçerek doğrudan ilgili kataloğa ulaşın.</p></div><div class="catalog-directory">${categories.map(categoryDirectory).join('')}</div>`;
   }
 
   function renderProductCatalog(category) {
@@ -68,10 +74,10 @@
     if (requestedBrand === 'ari') products = products.filter(product => product.groupId?.startsWith('ari-armaturen-'));
     if (requestedBrand === 'ayvaz') products = products.filter(product => product.groupId?.startsWith('ayvaz-'));
     const activeGroupName = products[0]?.group;
-    browser.style.marginTop = '0';
     applyCategorySeo(category);
     const heading = requestedBrand === 'ari' ? 'ARI-Armaturen Vanaları' : requestedBrand === 'ayvaz' ? 'Ayvaz Vanaları' : (activeGroupName || category.title);
     const summary = activeGroupName ? `${activeGroupName} ürünleri` : (category.seo?.intro || category.description);
+    browser.style.marginTop = '0';
     browser.innerHTML = `<div class="catalog-page-heading"><div><div class="page-kicker">ÜRÜN KATALOĞU</div><h1>${escapeHtml(heading)}</h1><p>${escapeHtml(summary)}</p></div><a class="catalog-page-back" href="kataloglar.html"><i class="fa-solid fa-arrow-left"></i> Tüm kataloglar</a></div><div class="catalog-product-grid">${products.length ? products.map(productCard).join('') : '<p class="catalog-empty">Bu alt kategoride listelenen ürün bulunamadı.</p>'}</div>`;
     document.body.insertAdjacentHTML('beforeend', modalMarkup());
     bindModal({ ...category, products });
@@ -88,31 +94,27 @@
     };
     setMeta('description', seo.description || category.description);
     setMeta('keywords', seo.keywords);
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = window.location.href;
-    const previousSchema = document.getElementById('catalog-category-schema');
-    if (previousSchema) previousSchema.remove();
-    const schema = document.createElement('script');
-    schema.id = 'catalog-category-schema'; schema.type = 'application/ld+json';
-    schema.text = JSON.stringify({ '@context':'https://schema.org', '@type':'CollectionPage', name: category.title, description: seo.description || category.description, mainEntity: { '@type':'ItemList', itemListElement: category.products.map((product, index) => ({ '@type':'ListItem', position:index + 1, item:{ '@type':'Product', name:product.name, description:product.description, image:product.images.map(image => new URL(image, window.location.href).href) } })) } });
-    document.head.appendChild(schema);
   }
 
   function bindModal(category) {
     const modal = document.querySelector('.catalog-product-modal');
     let activeProduct = null;
     let activeImage = 0;
-    function updateImage() {
+    const updateImage = () => {
       const image = activeProduct.images?.[activeImage] || '';
       modal.querySelector('.catalog-main-image img').src = image;
       modal.querySelector('.catalog-main-image img').alt = activeProduct.name;
       modal.querySelector('.catalog-main-image').classList.toggle('catalog-main-image-empty', !image);
       modal.querySelector('.catalog-thumbnails').innerHTML = (activeProduct.images || []).map((src, index) => `<button type="button" class="catalog-thumbnail ${index === activeImage ? 'is-active' : ''}" data-image-index="${index}" aria-label="${activeProduct.name} görsel ${index + 1}"><img src="${src}" alt=""></button>`).join('');
       modal.querySelectorAll('.catalog-gallery-arrow').forEach(button => { button.hidden = (activeProduct.images || []).length < 2; });
-    }
-    function closeModal() { modal.classList.remove('is-open'); document.body.classList.remove('catalog-modal-open'); }
-    function shiftImage(direction) { if ((activeProduct.images || []).length > 1) { activeImage = (activeImage + direction + activeProduct.images.length) % activeProduct.images.length; updateImage(); } }
+    };
+    const closeModal = () => { modal.classList.remove('is-open'); document.body.classList.remove('catalog-modal-open'); };
+    const shiftImage = direction => {
+      if ((activeProduct.images || []).length > 1) {
+        activeImage = (activeImage + direction + activeProduct.images.length) % activeProduct.images.length;
+        updateImage();
+      }
+    };
     browser.addEventListener('click', event => {
       const card = event.target.closest('[data-product-id]');
       if (!card) return;
@@ -122,7 +124,10 @@
       modal.querySelector('.catalog-modal-copy h2').textContent = activeProduct.name;
       modal.querySelector('.catalog-modal-copy p').textContent = activeProduct.description;
       modal.querySelector('.catalog-specifications').innerHTML = `${renderProductInformation(activeProduct)}${renderSpecifications(activeProduct)}`;
-      updateImage(); modal.classList.add('is-open'); document.body.classList.add('catalog-modal-open'); modal.querySelector('.catalog-modal-close').focus();
+      updateImage();
+      modal.classList.add('is-open');
+      document.body.classList.add('catalog-modal-open');
+      modal.querySelector('.catalog-modal-close').focus();
     });
     modal.addEventListener('click', event => {
       if (event.target === modal || event.target.closest('.catalog-modal-close')) closeModal();
@@ -140,5 +145,6 @@
   }
 
   const selectedCategory = categories.find(category => category.id === categoryId);
-  if (selectedCategory) renderProductCatalog(selectedCategory); else renderCategoryList();
+  if (selectedCategory) renderProductCatalog(selectedCategory);
+  else renderCategoryList();
 }());
