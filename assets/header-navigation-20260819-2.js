@@ -4,6 +4,8 @@
 
   const productMenu = `
     <li class="menu-has-children">
+      <a href="kataloglar.html?category=vanalar">Vanalar</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Vanalar alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
       <ul class="submenu-panel">
         <li class="menu-group">Ayvaz</li>
         <li><a href="kataloglar.html?category=vanalar&amp;group=ayvaz-kesme-vanalari">Kesme / Küresel Vanalar</a></li>
@@ -22,20 +24,20 @@
         <li><a href="kataloglar.html?category=vanalar&amp;group=ari-armaturen-aktuator">Aktüatörler</a></li>
         <li class="submenu-all"><a href="kataloglar.html?category=vanalar">Tüm vanaları görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
       </ul>
-      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Vanalar alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
-      <a href="kataloglar.html?category=vanalar">Vanalar</a>
     </li>
     <li class="menu-has-children">
+      <a href="kataloglar.html?category=kompansatorler">Kompansatörler</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Kompansatörler alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
       <ul class="submenu-panel">
         <li><a href="kataloglar.html?category=kompansatorler&amp;group=standart-kompansatorler">Metal / Standart Kompansatörler</a></li>
         <li><a href="kataloglar.html?category=kompansatorler&amp;group=kaucuk-kompansatorler">Kauçuk Kompansatörler</a></li>
         <li><a href="kataloglar.html?category=kompansatorler&amp;group=ozel-kompansatorler">Özel Kompansatörler</a></li>
         <li class="submenu-all"><a href="kataloglar.html?category=kompansatorler">Tüm kompansatörleri görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
       </ul>
-      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Kompansatörler alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
-      <a href="kataloglar.html?category=kompansatorler">Kompansatörler</a>
     </li>
     <li class="menu-has-children">
+      <a href="kataloglar.html?category=seviye-gostergeleri">Seviye Göstergeleri</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Seviye göstergeleri alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
       <ul class="submenu-panel">
         <li><a href="kataloglar.html?category=seviye-gostergeleri&amp;group=seviye-gostergeleri">Göstergeler</a></li>
         <li><a href="kataloglar.html?category=seviye-gostergeleri&amp;group=blof-sistemleri">Blöf Sistemleri</a></li>
@@ -45,8 +47,6 @@
         <li><a href="kataloglar.html?category=seviye-gostergeleri&amp;group=diger-seviye-ekipmanlari">Diğer Ürünler</a></li>
         <li class="submenu-all"><a href="kataloglar.html?category=seviye-gostergeleri">Tüm seviye ürünlerini görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
       </ul>
-      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Seviye göstergeleri alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
-      <a href="kataloglar.html?category=seviye-gostergeleri">Seviye Göstergeleri</a>
     </li>
     <li><a href="kataloglar.html?category=pnomatik">Pnömatik</a></li>
     <li><a href="kataloglar.html">Yardımcı Ürünler</a></li>`;
