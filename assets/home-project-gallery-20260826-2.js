@@ -1,4 +1,4 @@
-/* Alp Teknik ürün vitrini: iki şerit aynı ürün grubunu kesintisiz döndürür. */
+/* Alp Teknik ürün vitrini: şeritler farklı, rastgele sıralarla kesintisiz döner. */
 (function () {
   'use strict';
 
@@ -17,15 +17,31 @@
   const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[char]);
   const card = (item, duplicate) => `<a class="alp-gallery-card" href="${item.href}"${duplicate ? ' aria-hidden="true" tabindex="-1"' : ''}><img src="${mediaRoot}/${item.image}" alt="${duplicate ? '' : escapeHtml(item.title)}" loading="lazy"><span class="alp-gallery-card-content"><span>${escapeHtml(item.group)}</span><strong>${escapeHtml(item.title)}</strong><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>`;
 
+  function shuffle(items) {
+    const shuffled = [...items];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+    return shuffled;
+  }
+
+  function differentOrder(reference) {
+    let candidate = shuffle(galleryItems);
+    for (let attempt = 0; attempt < 8 && candidate.some((item, index) => item.image === reference[index].image); attempt += 1) candidate = shuffle(galleryItems);
+    return candidate.some((item, index) => item.image === reference[index].image) ? [...reference.slice(1), reference[0]] : candidate;
+  }
+
   function populate(track, items) {
     track.innerHTML = items.map(item => card(item, false)).join('') + items.map(item => card(item, true)).join('');
   }
 
   function init() {
     const tracks = document.querySelectorAll('[data-alp-gallery-track]');
-    if (!tracks.length) return;
-    populate(tracks[0], galleryItems);
-    populate(tracks[1], [...galleryItems.slice(4), ...galleryItems.slice(0, 4)]);
+    if (tracks.length < 2) return;
+    const upperItems = shuffle(galleryItems);
+    populate(tracks[0], upperItems);
+    populate(tracks[1], differentOrder(upperItems));
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

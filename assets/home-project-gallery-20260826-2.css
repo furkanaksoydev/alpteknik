@@ -10,14 +10,15 @@
 .alp-gallery-intro p { max-width:650px; margin:0; color:var(--text-muted); font-size:1.02rem; line-height:1.75; }
 .alp-gallery-all { display:inline-flex; align-items:center; gap:10px; padding:12px 17px; border:1px solid rgba(13,148,136,.28); border-radius:999px; background:var(--bg-card); color:var(--primary-dark); font:600 .82rem 'Poppins',sans-serif; white-space:nowrap; box-shadow:0 8px 20px rgba(13,148,136,.08); }
 .alp-gallery-all:hover { border-color:var(--primary); background:var(--primary); color:#fff; transform:translateY(-2px); }
-.alp-gallery-marquee { position:relative; display:flex; flex-direction:column; gap:20px; width:100%; }
-.alp-gallery-marquee::before,.alp-gallery-marquee::after { content:''; position:absolute; z-index:2; top:0; bottom:0; width:min(12vw,180px); pointer-events:none; }
+/* Görsel bandının 100 px üstü ve altı fareyle duraklatma alanıdır. */
+.alp-gallery-marquee { position:relative; display:flex; flex-direction:column; gap:20px; width:100%; padding:100px 0; margin:-100px 0; }
+.alp-gallery-marquee::before,.alp-gallery-marquee::after { content:''; position:absolute; z-index:2; top:100px; bottom:100px; width:min(12vw,180px); pointer-events:none; }
 .alp-gallery-marquee::before { left:0; background:linear-gradient(90deg,var(--bg-alt),transparent); }
 .alp-gallery-marquee::after { right:0; background:linear-gradient(-90deg,var(--bg-alt),transparent); }
 .alp-gallery-track { display:flex; gap:18px; width:max-content; will-change:transform; }
 .alp-gallery-track--forward { animation:alpGalleryForward 58s linear infinite; }
 .alp-gallery-track--reverse { animation:alpGalleryReverse 64s linear infinite; transform:translateX(calc(-50% - 9px)); }
-.alp-project-gallery:hover .alp-gallery-track,.alp-project-gallery:focus-within .alp-gallery-track { animation-play-state:paused; }
+.alp-gallery-marquee:hover .alp-gallery-track,.alp-gallery-marquee:focus-within .alp-gallery-track { animation-play-state:paused; }
 .alp-gallery-card { position:relative; display:block; flex:0 0 clamp(255px,28vw,390px); height:258px; overflow:hidden; border:1px solid var(--border); border-radius:18px; background:var(--bg-card); box-shadow:0 12px 30px rgba(15,23,42,.11); isolation:isolate; }
 .alp-gallery-card::before { content:''; position:absolute; z-index:1; inset:0; background:linear-gradient(180deg,transparent 33%,rgba(15,23,42,.78)); opacity:.88; transition:opacity .3s ease; }
 .alp-gallery-card::after { content:''; position:absolute; z-index:2; inset:0; border:1px solid transparent; border-radius:inherit; transition:border-color .3s ease,box-shadow .3s ease; }
@@ -40,4 +41,4 @@ body.dark-mode .alp-project-gallery::before { opacity:.23; }
 body.dark-mode .alp-gallery-marquee::before { background:linear-gradient(90deg,#0b1521,transparent); }
 body.dark-mode .alp-gallery-marquee::after { background:linear-gradient(-90deg,#0b1521,transparent); }
 @media (max-width:760px) { .alp-project-gallery { padding:78px 0 72px; }.alp-gallery-intro { grid-template-columns:1fr; align-items:start; gap:22px; margin-bottom:38px; }.alp-gallery-all { width:max-content; }.alp-gallery-marquee { gap:14px; }.alp-gallery-track { gap:14px; }.alp-gallery-card { flex-basis:245px; height:214px; border-radius:15px; }.alp-gallery-card img { padding:14px; }.alp-gallery-card-content { padding:15px 16px; }.alp-gallery-card-content strong { max-width:185px; font-size:.88rem; }.alp-gallery-card-content i { right:15px; bottom:15px; width:30px; height:30px; }.alp-gallery-marquee::before,.alp-gallery-marquee::after { width:34px; } }
-@media (prefers-reduced-motion:reduce) { .alp-gallery-marquee { overflow-x:auto; padding-bottom:7px; scrollbar-color:var(--primary) transparent; }.alp-gallery-track { animation:none; transform:none !important; }.alp-gallery-track--reverse { display:none; } }
+@media (prefers-reduced-motion:reduce) { .alp-gallery-marquee { overflow-x:auto; padding-bottom:107px; scrollbar-color:var(--primary) transparent; }.alp-gallery-track { animation:none; transform:none !important; }.alp-gallery-track--reverse { display:none; } }
