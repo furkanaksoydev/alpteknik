@@ -1,0 +1,43 @@
+/* Alp Teknik ana sayfa ürün galerisi: çift yönlü, sonsuz kayan vitrin. */
+.alp-project-gallery { position:relative; overflow:hidden; padding:110px 0 104px; background:linear-gradient(145deg,var(--bg-alt),var(--bg-main)); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.alp-project-gallery::before { content:''; position:absolute; inset:0; pointer-events:none; opacity:.45; background-image:linear-gradient(rgba(13,148,136,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(13,148,136,.06) 1px,transparent 1px); background-size:46px 46px; mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 82%,transparent); }
+.alp-project-gallery .container { position:relative; z-index:1; }
+.alp-gallery-intro { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:30px; margin-bottom:54px; }
+.alp-gallery-kicker { display:inline-flex; align-items:center; gap:9px; margin-bottom:13px; color:var(--primary); font:700 .75rem/1 'Poppins',sans-serif; letter-spacing:.13em; text-transform:uppercase; }
+.alp-gallery-kicker::before { content:''; width:26px; height:2px; border-radius:2px; background:currentColor; }
+.alp-gallery-intro h2 { max-width:720px; margin:0 0 12px; color:var(--text-dark); font-size:clamp(2rem,4vw,3.05rem); line-height:1.14; }
+.alp-gallery-intro h2 span { color:var(--primary); }
+.alp-gallery-intro p { max-width:650px; margin:0; color:var(--text-muted); font-size:1.02rem; line-height:1.75; }
+.alp-gallery-all { display:inline-flex; align-items:center; gap:10px; padding:12px 17px; border:1px solid rgba(13,148,136,.28); border-radius:999px; background:var(--bg-card); color:var(--primary-dark); font:600 .82rem 'Poppins',sans-serif; white-space:nowrap; box-shadow:0 8px 20px rgba(13,148,136,.08); }
+.alp-gallery-all:hover { border-color:var(--primary); background:var(--primary); color:#fff; transform:translateY(-2px); }
+.alp-gallery-marquee { position:relative; display:flex; flex-direction:column; gap:20px; width:100%; }
+.alp-gallery-marquee::before,.alp-gallery-marquee::after { content:''; position:absolute; z-index:2; top:0; bottom:0; width:min(12vw,180px); pointer-events:none; }
+.alp-gallery-marquee::before { left:0; background:linear-gradient(90deg,var(--bg-alt),transparent); }
+.alp-gallery-marquee::after { right:0; background:linear-gradient(-90deg,var(--bg-alt),transparent); }
+.alp-gallery-track { display:flex; gap:18px; width:max-content; will-change:transform; }
+.alp-gallery-track--forward { animation:alpGalleryForward 58s linear infinite; }
+.alp-gallery-track--reverse { animation:alpGalleryReverse 64s linear infinite; transform:translateX(calc(-50% - 9px)); }
+.alp-project-gallery:hover .alp-gallery-track,.alp-project-gallery:focus-within .alp-gallery-track { animation-play-state:paused; }
+.alp-gallery-card { position:relative; display:block; flex:0 0 clamp(255px,28vw,390px); height:258px; overflow:hidden; border:1px solid var(--border); border-radius:18px; background:var(--bg-card); box-shadow:0 12px 30px rgba(15,23,42,.11); isolation:isolate; }
+.alp-gallery-card::before { content:''; position:absolute; z-index:1; inset:0; background:linear-gradient(180deg,transparent 33%,rgba(15,23,42,.78)); opacity:.88; transition:opacity .3s ease; }
+.alp-gallery-card::after { content:''; position:absolute; z-index:2; inset:0; border:1px solid transparent; border-radius:inherit; transition:border-color .3s ease,box-shadow .3s ease; }
+.alp-gallery-card img { width:100%; height:100%; padding:18px; object-fit:contain; background:radial-gradient(circle at 50% 35%,#fff 0 30%,#edf5f4 76%,#dceceb 100%); transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .3s ease; }
+.alp-gallery-card-content { position:absolute; z-index:3; right:0; bottom:0; left:0; padding:20px 21px 18px; color:#fff; transform:translateY(3px); transition:transform .3s ease; }
+.alp-gallery-card-content span { display:block; margin-bottom:5px; color:#bdf3eb; font:700 .67rem/1.3 'Poppins',sans-serif; letter-spacing:.11em; text-transform:uppercase; }
+.alp-gallery-card-content strong { display:block; font:600 1rem/1.35 'Poppins',sans-serif; }
+.alp-gallery-card-content i { position:absolute; right:20px; bottom:20px; display:grid; width:34px; height:34px; place-items:center; border:1px solid rgba(255,255,255,.45); border-radius:50%; font-size:.75rem; opacity:0; transform:translateX(-6px); transition:opacity .25s ease,transform .25s ease; }
+.alp-gallery-marquee:hover .alp-gallery-card:not(:hover) { opacity:.55; }
+.alp-gallery-card:hover { z-index:3; }
+.alp-gallery-card:hover::before { opacity:.68; }
+.alp-gallery-card:hover::after { border-color:rgba(94,234,212,.78); box-shadow:inset 0 0 0 1px rgba(94,234,212,.22),0 20px 42px rgba(13,148,136,.22); }
+.alp-gallery-card:hover img { filter:saturate(1.08); transform:scale(1.09); }
+.alp-gallery-card:hover .alp-gallery-card-content { transform:translateY(0); }
+.alp-gallery-card:hover .alp-gallery-card-content i { opacity:1; transform:translateX(0); }
+@keyframes alpGalleryForward { from { transform:translateX(0); } to { transform:translateX(calc(-50% - 9px)); } }
+@keyframes alpGalleryReverse { from { transform:translateX(calc(-50% - 9px)); } to { transform:translateX(0); } }
+body.dark-mode .alp-project-gallery { background:linear-gradient(145deg,#0b1521,#0f172a); }
+body.dark-mode .alp-project-gallery::before { opacity:.23; }
+body.dark-mode .alp-gallery-marquee::before { background:linear-gradient(90deg,#0b1521,transparent); }
+body.dark-mode .alp-gallery-marquee::after { background:linear-gradient(-90deg,#0b1521,transparent); }
+@media (max-width:760px) { .alp-project-gallery { padding:78px 0 72px; }.alp-gallery-intro { grid-template-columns:1fr; align-items:start; gap:22px; margin-bottom:38px; }.alp-gallery-all { width:max-content; }.alp-gallery-marquee { gap:14px; }.alp-gallery-track { gap:14px; }.alp-gallery-card { flex-basis:245px; height:214px; border-radius:15px; }.alp-gallery-card img { padding:14px; }.alp-gallery-card-content { padding:15px 16px; }.alp-gallery-card-content strong { max-width:185px; font-size:.88rem; }.alp-gallery-card-content i { right:15px; bottom:15px; width:30px; height:30px; }.alp-gallery-marquee::before,.alp-gallery-marquee::after { width:34px; } }
+@media (prefers-reduced-motion:reduce) { .alp-gallery-marquee { overflow-x:auto; padding-bottom:7px; scrollbar-color:var(--primary) transparent; }.alp-gallery-track { animation:none; transform:none !important; }.alp-gallery-track--reverse { display:none; } }
