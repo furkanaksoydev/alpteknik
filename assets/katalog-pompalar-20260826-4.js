@@ -6,4 +6,3 @@
   window.catalogData.categories = window.catalogData.categories.filter(category => category.id !== pumpCategory.id);
   window.catalogData.categories.push(pumpCategory);
 }());
-
