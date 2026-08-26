@@ -81,6 +81,57 @@
         <li class="submenu-all"><a href="kataloglar.html?category=fittings-malzemeler">Tüm fittings malzemelerini görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
       </ul>
     </li>
+    <li class="menu-has-children">
+      <a href="kataloglar.html?category=pompalar">Pompalar</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-label="Pompalar alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+      <ul class="submenu-panel submenu-panel--pumps">
+        <li class="menu-has-children">
+          <a href="kataloglar.html?category=pompalar&amp;brand=sempa">Sempa</a>
+          <button class="nav-toggle" type="button" data-menu-toggle aria-label="Sempa alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+          <ul class="submenu-panel">
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-uctan-emisli-pompalar">Uçtan Emişli Pompalar</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-cok-kademeli-pompalar">Çok Kademeli Pompalar</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-atik-su-pompalari">Atık Su Pompaları</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-in-line-pompalar">In-Line Pompalar</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-bolunebilir-govdeli-pompalar">Bölünebilir Gövdeli Pompalar</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-kendinden-emisli-pompalar">Kendinden Emişli Pompalar</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-hidrofor-pompalari">Hidrofor Pompaları</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=sempa&amp;group=sempa-yangin-sondurme-pompalari">Yangın Söndürme Pompaları</a></li>
+          </ul>
+        </li>
+        <li class="menu-has-children">
+          <a href="kataloglar.html?category=pompalar&amp;brand=etna">Etna</a>
+          <button class="nav-toggle" type="button" data-menu-toggle aria-label="Etna alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+          <ul class="submenu-panel">
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-kucuk-konutsal-urunler">Küçük Konutsal Ürünler</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-sirkulasyon-pompasi">Sirkülasyon Pompası</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-santrifuj-pompa">Santrifüj Pompa</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-hidrofor-sistemleri">Hidrofor Sistemleri</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-atik-su-ve-drenaj-pompasi">Atık Su ve Drenaj Pompası</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-atik-su-tahliye-unitesi">Atık Su Tahliye Ünitesi</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-yanginla-mucadele-sistemleri">Yangınla Mücadele Sistemleri</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-koruma-kontrol-panolari">Koruma &amp; Kontrol Panoları</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=etna&amp;group=etna-aksesuarlar">Aksesuarlar</a></li>
+          </ul>
+        </li>
+        <li class="menu-has-children">
+          <a href="kataloglar.html?category=pompalar&amp;brand=lowara">Lowara</a>
+          <button class="nav-toggle" type="button" data-menu-toggle aria-label="Lowara alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
+          <ul class="submenu-panel">
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-tek-kademeli-pompalar">Tek Kademeli Pompalar</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-cok-kademeli-pompalar">Çok Kademeli Pompalar</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-isitma-sogutma-ve-iklimlendirme-pompalari">Isıtma, Soğutma ve İklimlendirme Pompaları</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-drenaj-ve-atiksu-pompalari">Drenaj ve Atıksu Pompaları</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-atik-su-tahliye-sistemleri">Atık Su Tahliye Sistemleri</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-derinkuyu-pompalari">Derinkuyu Pompaları</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-hidrofor-sistemleri">Hidrofor Sistemleri</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-pompa-kontrol-sistemleri">Pompa Kontrol Sistemleri</a></li>
+            <li><a href="kataloglar.html?category=pompalar&amp;brand=lowara&amp;group=lowara-pompa-ve-sistem-aksesuarlari">Pompa ve Sistem Aksesuarları</a></li>
+          </ul>
+        </li>
+        <li class="submenu-all"><a href="kataloglar.html?category=pompalar">Tüm pompaları görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
+      </ul>
+    </li>
     <li><a href="https://media.nevasiteyonetimi.com/alpteknik/dokumanlar/alp-teknik-monometreler.pdf" target="_blank" rel="noopener noreferrer">Monometreler</a></li>`;
 
   const menuMarkup = `

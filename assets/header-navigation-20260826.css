@@ -32,7 +32,6 @@
   .header-navigation-surface .submenu-panel--fittings > li.menu-has-children:hover > .submenu-panel,
   .header-navigation-surface .submenu-panel--fittings > li.menu-has-children.is-open > .submenu-panel { transform:translateX(0) scale(1); }
 }
-
 /* One shared marker geometry keeps first- and second-level labels aligned. */
 .header-navigation-surface .dropdown-menu li > a { --marker-left:16px; --label-left:39px; position:relative; display:block; min-height:42px; padding:10px 38px 10px var(--label-left); color:var(--text-dark); font-size:.91rem; font-weight:500; line-height:1.35; }
 .header-navigation-surface .dropdown-menu li > a::before { content:''; position:absolute; top:50%; left:var(--marker-left); width:0; height:2px; background:var(--primary); transform:translateY(-50%); transition:width .22s ease; }
@@ -112,4 +111,16 @@
   .header-navigation-surface .logo img { max-width:155px !important; }
   .header-navigation-surface .nav-links,
   .news-header.header-navigation-surface .nav-links { max-height:calc(100vh - 70px); }
+}
+
+
+/* Pompalar has a fourth navigation level; keep the brand flyouts outside their parent scroll box. */
+.header-navigation-surface .submenu-panel--pumps { max-height:none; overflow:visible; z-index:40; }
+.header-navigation-surface .submenu-panel--pumps > li.menu-has-children > .submenu-panel { top:-9px; right:calc(100% - 9px); left:auto; z-index:50; transform:translateX(10px) scale(.98); transform-origin:right top; }
+.header-navigation-surface .submenu-panel--pumps > li.menu-has-children:hover > .submenu-panel,
+.header-navigation-surface .submenu-panel--pumps > li.menu-has-children.is-open > .submenu-panel { transform:translateX(0) scale(1); }
+@media (min-width:1500px) {
+  .header-navigation-surface .submenu-panel--pumps > li.menu-has-children > .submenu-panel { right:auto; left:calc(100% - 9px); transform:translateX(-10px) scale(.98); transform-origin:left top; }
+  .header-navigation-surface .submenu-panel--pumps > li.menu-has-children:hover > .submenu-panel,
+  .header-navigation-surface .submenu-panel--pumps > li.menu-has-children.is-open > .submenu-panel { transform:translateX(0) scale(1); }
 }

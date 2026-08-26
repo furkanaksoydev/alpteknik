@@ -70,7 +70,8 @@
   function renderProductCatalog(category) {
     let products = requestedGroup ? category.products.filter(product => product.groupId === requestedGroup) : category.products;
     if (requestedBrand === 'ari') products = products.filter(product => product.groupId?.startsWith('ari-armaturen-'));
-    if (requestedBrand === 'ayvaz') products = products.filter(product => product.groupId?.startsWith('ayvaz-'));
+    else if (requestedBrand === 'ayvaz') products = products.filter(product => product.groupId?.startsWith('ayvaz-'));
+    else if (requestedBrand) products = products.filter(product => product.brand?.toLocaleLowerCase('tr-TR') === requestedBrand.toLocaleLowerCase('tr-TR'));
     const activeGroupName = products[0]?.group;
     applyCategorySeo(category);
     const heading = requestedBrand === 'ari' ? 'ARI-Armaturen Vanaları' : requestedBrand === 'ayvaz' ? 'Ayvaz Vanaları' : (activeGroupName || category.title);
