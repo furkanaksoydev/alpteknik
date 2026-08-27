@@ -22,25 +22,20 @@
         <li><a href="kataloglar.html?category=vanalar&amp;group=ari-armaturen-emniyet-ventilleri">Emniyet Ventilleri</a></li>
         <li><a href="kataloglar.html?category=vanalar&amp;group=ari-armaturen-buhar-kapanlari">Buhar Kapanları</a></li>
         <li><a href="kataloglar.html?category=vanalar&amp;group=ari-armaturen-aktuator">Aktüatörler</a></li>
-        <li class="menu-has-children">
-          <a href="kataloglar.html?category=vanalar&amp;brand=Samson">Samson</a>
-          <button class="nav-toggle" type="button" data-menu-toggle aria-label="Samson alt menüsünü aç" aria-expanded="false"><i class="fa-solid fa-chevron-right"></i></button>
-          <ul class="submenu-panel">
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-eksenel-valf">Eksenel Valf</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-kuresel-vana">Küresel Vana</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-alt-tahliye-kuresel-vanasi">Alt Tahliye Küresel Vanası</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-kelebek-vana">Kelebek Vana</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-diyaframli-vana">Diyaframlı Vana</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-globe-vana">Globe Vana</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-boruyla-temizlenebilen-vana">Boruyla Temizlenebilen Vana</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-doner-tapa-vanasi">Döner Tapa Vanası</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-ornekleme-vanasi">Örnekleme Vanası</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-segmentli-kuresel-vana">Segmentli Küresel Vana</a></li>
-            <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-kayar-disk">Kayar Disk</a></li>
-            <li class="submenu-all"><a href="kataloglar.html?category=vanalar&amp;brand=Samson">Tüm Samson vanalarını görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
-          </ul>
-        </li>
-        <li class="submenu-all"><a href="kataloglar.html?category=vanalar">Tüm vanaları görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
+        <li class="menu-group">Samson</li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-eksenel-valf">Eksenel Valf</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-kuresel-vana">Küresel Vana</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-alt-tahliye-kuresel-vanasi">Alt Tahliye Küresel Vanası</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-kelebek-vana">Kelebek Vana</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-diyaframli-vana">Diyaframlı Vana</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-globe-vana">Globe Vana</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-boruyla-temizlenebilen-vana">Boruyla Temizlenebilen Vana</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-doner-tapa-vanasi">Döner Tapa Vanası</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-ornekleme-vanasi">Örnekleme Vanası</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-segmentli-kuresel-vana">Segmentli Küresel Vana</a></li>
+        <li><a href="kataloglar.html?category=vanalar&amp;brand=Samson&amp;group=samson-kayar-disk">Kayar Disk</a></li>
+        <li class="submenu-all"><a href="kataloglar.html?category=vanalar&amp;brand=Samson">Tüm Samson vanalarını görüntüle <i class="fa-solid fa-arrow-right"></i></a></li>
+
       </ul>
     </li>
     <li class="menu-has-children">
