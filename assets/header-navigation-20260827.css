@@ -127,4 +127,3 @@
 /* Açık temada beyaz logonun okunurluğu için kontrollü koyu zemin. */
 body:not(.dark-mode) .header-navigation-surface .logo { display:inline-flex; align-items:center; padding:7px 10px; border-radius:12px; background:#0f172a; box-shadow:0 8px 20px rgba(15,23,42,.14); line-height:0; }
 body:not(.dark-mode) .header-navigation-surface .logo img { display:block; }
-

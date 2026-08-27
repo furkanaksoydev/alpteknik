@@ -8,4 +8,3 @@
 
   valveCategory.products = [...valveCategory.products.filter(product => product.brand !== 'Samson'), ...samsonProducts];
 }());
-
