@@ -1,47 +1,23 @@
 <!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Yatırımcı İlişkileri | Alp Teknik</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>
         /* =========================================
            PREMIUM CSS DEGISKENLERI (LIGHT & DARK)
-        ========================================= */
-        :root {
-            /* Light Theme (Premium & Minimal) */
-            --primary: #0d9488; /* Teal / Zümrüt */
+        ========================================= */        :root {
+            --primary: #0d9488;
             --primary-dark: #0f766e;
-            --accent: #f59e0b; /* Amber */
-
-            --bg-main: #ffffff;
-            --bg-card: #f8fafc;
-            --bg-alt: #E9EEF3;
-
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-
-            --border: #e2e8f0;
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.5);
-
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-
-            --radius-md: 12px;
-            --radius-lg: 24px;
-
-            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        body.dark-mode {
-            /* Dark Theme (High-Tech & Sleek) */
+            --accent: #f59e0b;
             --bg-main: #0f172a;
             --bg-card: #1e293b;
             --bg-alt: #0b1120;
-
             --text-dark: #f8fafc;
             --text-muted: #94a3b8;
-
             --border: #334155;
             --glass-bg: rgba(15, 23, 42, 0.75);
             --glass-border: rgba(255, 255, 255, 0.05);
-
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         /* =========================================
@@ -146,13 +122,6 @@
         .dropdown-menu li a:hover::before { width: 12px; }
 
         .header-actions { display: flex; align-items: center; gap: 20px; }
-
-        .theme-btn {
-            background: var(--bg-card); border: 1px solid var(--border);
-            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            color: var(--text-dark); cursor: pointer; transition: var(--transition);
-        }
-        .theme-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: rotate(30deg);}
 
         .btn-primary {
             background: var(--primary); color: #fff; padding: 14px 32px;
@@ -499,8 +468,8 @@
         .contact-form input, .contact-form textarea, .contact-form select { width:100%; padding:15px 18px; margin-bottom:16px; border:1px solid var(--border); border-radius:10px; background:var(--bg-main); color:var(--text-dark); font:inherit; }
         .contact-form textarea { min-height:150px; resize:vertical; }
         @media (max-width:900px) { .split-layout, .contact-grid { grid-template-columns:1fr; gap:35px; } .split-layout.reverse > :first-child { order:0; } .info-grid { grid-template-columns:repeat(2,1fr); } }
-        @media (max-width:576px) { .page-hero { padding-top:130px; min-height:auto; } .content-image { min-height:280px; } .info-grid { grid-template-columns:1fr; } .catalog-card { flex-direction:column; align-items:flex-start; } .contact-panel, .contact-form { padding:28px; } }</style><link rel="stylesheet" href="assets/site-enhancements.css"><link rel="stylesheet" href="assets/header-navigation-20260827.css">
-<script defer src="assets/header-navigation-20260827-2.js"></script></head><body><div id="preloader"><div class="spinner"></div></div>    <header id="header">
+        @media (max-width:576px) { .page-hero { padding-top:130px; min-height:auto; } .content-image { min-height:280px; } .info-grid { grid-template-columns:1fr; } .catalog-card { flex-direction:column; align-items:flex-start; } .contact-panel, .contact-form { padding:28px; } }</style><link rel="stylesheet" href="assets/site-enhancements.css"><link rel="stylesheet" href="assets/header-navigation-20260829.css">
+<script defer src="assets/header-navigation-20260829.js"></script></head><body class="dark-mode"><div id="preloader"><div class="spinner"></div></div>    <header id="header">
         <div class="container nav-wrapper">
             <a href="index.html" class="logo"><img src="https://media.nevasiteyonetimi.com/alpteknik/logo.png" alt="Alp Teknik" style="display:block;width:175px;max-width:42vw;height:auto;max-height:58px;object-fit:contain;"></a>
             <ul class="nav-links">
@@ -512,7 +481,7 @@
                 </ul></li>
                 <li class="nav-item"><a href="referanslar.html">Referanslar</a></li><li class="nav-item"><a href="kataloglar.html">Kataloglar</a></li><li class="nav-item"><a href="iletisim.html">İletişim</a></li>
             </ul>
-            <div class="header-actions"><button class="theme-btn" onclick="toggleTheme()" title="Temayı Değiştir"><i class="fa-solid fa-moon"></i></button><a href="iletisim.html" class="btn-primary">Teklif İste</a></div>
+            <div class="header-actions"><a href="iletisim.html" class="btn-primary">Teklif İste</a></div>
             <i class="fa-solid fa-bars mobile-menu-btn" onclick="document.querySelector('.nav-wrapper').classList.toggle('nav-active')"></i>
         </div>
     </header>
@@ -543,26 +512,6 @@
                 header.classList.remove('scrolled');
             }
         });
-
-        // 3. Dark/Light Mod (Premium Toggle)
-        const themeBtn = document.querySelector('.theme-btn i');
-
-        if(localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeBtn.classList.replace('fa-moon', 'fa-sun');
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeBtn.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeBtn.classList.replace('fa-sun', 'fa-moon');
-            }
-        }
 
         // 4. Istatistik Sayaci
         const counters = document.querySelectorAll('.stat-num');
@@ -606,5 +555,5 @@
             });
         }
         window.addEventListener('scroll', revealElements);
-    </script><script src="assets/site.js"></script>
+    </script><script src="assets/site-20260829.js"></script>
 </body></html>
